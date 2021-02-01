@@ -10,7 +10,7 @@
    
 </head>
 
-<body>
+<body onload="addTables()">
     <div class="container">
         <div class="jumbotron">
             <h1 class="display-4">Hot Restaurant</h1>
@@ -23,17 +23,22 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header">Current Reservations</div>
+                    <div class="card-header">
+                        <div class="card-header">Current Reservations</div>
+                    </div>
                     <div class="card-body">
                         <h2 id="name"></h2>
                         <div id="stats" style="display: none;">
-                          <h3>
-                            <strong></strong> <span id="phone"></span>
-                          </h3>
-                          <h3><strong></strong> <span id="email"></span></h3>
-                          <h3>
+                            <h3>
+                                <strong></strong> <span id="phone"></span>
+                            </h3>
+                            <h3>
+                                <strong></strong> <span id="email"></span></h3>
+                            <h3>
                             <strong></strong>
                             <span id="id"></span>
+                            </h3>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,21 +56,19 @@
     </div>
 
     <script type="text/javascript">
-        const searchBtn = document.getElementById('search-btn');
         const statsEl = document.getElementById('stats');
         const nameEl = document.getElementById('name');
         const phoneEl = document.getElementById('phone');
         const emailEl = document.getElementById('email');
         const idEl = document.getElementById('id');
 
-
-
-        fetch(`/api/reservation`, {
+        const addTables = () => {
+            fetch(`/api/reservation`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
-        })
+            })
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
@@ -86,8 +89,7 @@
             .catch((error) => {
                 console.error(error);
             });
-
+        };
     </script>
 </body>
-
 </html>
