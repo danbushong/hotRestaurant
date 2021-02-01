@@ -8,7 +8,6 @@ app.use(express.json());
 
 const reservations = [
     {
-        routeName: 'reservation1',
         name: "Dan",
         phone: 512123456,
         email: "dan@bushong.com",
